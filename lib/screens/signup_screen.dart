@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/authentication.dart';
-
 import 'home_screen.dart';
 import 'login_screen.dart';
+import 'package:login_app/models/authentication.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -42,18 +41,19 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Future<void> _submit() async
   {
-    if(!_formKey.currentState.validate())
+    if(_formKey.currentState!.validate())
       {
         return;
       }
-    _formKey.currentState.save();
+    _formKey.currentState!.save();
 
     try{
       await Provider.of<Authentication>(context, listen: false).signUp(
-          _authData['email'],
-          _authData['password']
+        
+          _authData['email']!,
+          _authData['password']!
       );
-      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
 
     } catch(error)
     {
@@ -115,7 +115,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           keyboardType: TextInputType.emailAddress,
                           validator: (value)
                           {
-                            if(value.isEmpty || !value.contains('@'))
+                            if(value!.isEmpty || value.contains('@'))
                             {
                               return 'invalid email';
                             }
@@ -123,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                           onSaved: (value)
                           {
-                            _authData['email'] = value;
+                            _authData['email'] = value!;
                           },
                         ),
 
@@ -134,7 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           controller: _passwordController,
                           validator: (value)
                           {
-                            if(value.isEmpty || value.length<=5)
+                            if(value!.isEmpty || value.length<=5)
                             {
                               return 'invalid password';
                             }
@@ -142,7 +142,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                           onSaved: (value)
                           {
-                            _authData['password'] = value;
+                            _authData['password'] = value!;
                           },
                         ),
 
@@ -152,7 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           obscureText: true,
                           validator: (value)
                           {
-                            if(value.isEmpty || value != _passwordController.text)
+                            if(value!.isEmpty || value != _passwordController.text)
                             {
                               return 'invalid password';
                             }

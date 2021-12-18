@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/content/content_page.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/home_screen.dart';
@@ -22,11 +23,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.blue,
         ),
-        home: LoginScreen(),
+        home: Welcome(),
         routes: {
           SignupScreen.routeName: (ctx)=> SignupScreen(),
           LoginScreen.routeName: (ctx)=> LoginScreen(),
-          HomeScreen.routeName: (ctx)=> HomeScreen(),
+          Welcome.routeName: (ctx)=> Welcome(),
+          ContentPage.routeName: (ctx)=> ContentPage(),
+
         },
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/content/content_page.dart';
 import 'package:provider/provider.dart';
 
 import 'signup_screen.dart';
-import 'home_screen.dart';
 import '../models/authentication.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,18 +41,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _submit() async
   {
-    if(!_formKey.currentState.validate())
+    if(!_formKey.currentState!.validate())
       {
         return;
       }
-    _formKey.currentState.save();
+    _formKey.currentState!.save();
 
     try{
       await Provider.of<Authentication>(context, listen: false).logIn(
-          _authData['email'],
-          _authData['password']
+          _authData['email']!,
+          _authData['password']!,
       );
-      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(ContentPage.routeName);
 
     } catch (error)
     {
@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           keyboardType: TextInputType.emailAddress,
                           validator: (value)
                           {
-                            if(value.isEmpty || !value.contains('@'))
+                            if(value!.isEmpty || !value.contains('@'))
                               {
                                 return 'invalid email';
                               }
@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           onSaved: (value)
                           {
-                            _authData['email'] = value;
+                            _authData['email'] = value!;
                           },
                         ),
 
@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           obscureText: true,
                           validator: (value)
                           {
-                            if(value.isEmpty || value.length<=5)
+                            if(value!.isEmpty || value.length<=5)
                               {
                                 return 'invalid password';
                               }
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           onSaved: (value)
                           {
-                            _authData['password'] = value;
+                            _authData['password'] = value!;
                           },
                         ),
                         SizedBox(

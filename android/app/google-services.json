@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1024887049638",
+    "project_id": "grupo4-58bf6",
+    "storage_bucket": "grupo4-58bf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024887049638:android:fe76a99a8b189572b7d367",
+        "android_client_info": {
+          "package_name": "com.sahan.login_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024887049638-2gsphchmpu2ghidn7qeenlpmo8jv0gju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9H3-ynVzFYhTTtqEq0Rqdb5PF1I6TiSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024887049638-2gsphchmpu2ghidn7qeenlpmo8jv0gju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
